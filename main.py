@@ -11,6 +11,7 @@ divide = FALSE
 multlication = FALSE
 add = FALSE
 sub = FALSE
+perc = FALSE
 
 root.configure(background='#282828')
 
@@ -59,6 +60,15 @@ def add_button():
     num1 = e.get()
     e.delete(0, END)
 
+#percent function
+def perc_button():
+    global num1
+    global perc
+    perc = TRUE
+    num1 = e.get()
+    e.delete(0, END)
+
+
 #clear function
 def clear_button():
     e.delete(0, END)
@@ -87,7 +97,6 @@ def equal_button():
     if divide == True:
         e.insert(0, int(num1) / int(num2))
         divide = FALSE
-
 divide = Button(root,
                 text='÷',
                 padx=40,
@@ -276,7 +285,7 @@ add.grid(row=3, column=4)
 #fourth row
 zero = Button(root,
                 text='0',
-                padx=91,
+                padx=40,
                 pady=20,
                 command=lambda: button_click(0),
                 fg='#FFFFFF',
@@ -286,7 +295,21 @@ zero = Button(root,
                 relief=FLAT,
                 font=('futura', 12, 'bold')
                 )
-zero.grid(row=4, column=1, columnspan=2)
+zero.grid(row=4, column=1)
+
+perc = Button(root,
+                text='%',
+                padx=36,
+                pady=20,
+                command=perc_button,
+                fg='#FFFFFF',
+                activeforeground='#FFFFFF',
+                bg='#320064',
+                activebackground='#240046',
+                relief=FLAT,
+                font=('futura', 12, 'bold')
+                )
+perc.grid(row=4, column=4)
 
 clear = Button(root,
                 text='c',
@@ -300,7 +323,7 @@ clear = Button(root,
                 relief=FLAT,
                 font=('futura', 12, 'bold')
                 )
-clear.grid(row=4, column=3)
+clear.grid(row=4, column=2)
 
 equal = Button(root,
                 text='=',
@@ -314,7 +337,7 @@ equal = Button(root,
                 relief=FLAT,
                 font=('futura', 12, 'bold')
                 )
-equal.grid(row=4, column=4)
+equal.grid(row=4, column=3)
 
 
 root.mainloop()
